@@ -15,7 +15,6 @@ def A1_A0254474Y(X, y):
     """
 
     # your code goes here
-    pass
     InvXTX = inv(X.T @ X)
     w = inv(X.T @ X) @ X.T @ y
     
