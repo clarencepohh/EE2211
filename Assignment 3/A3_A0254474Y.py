@@ -43,7 +43,7 @@ def A3_A0254474Y(learning_rate, num_iters):
 
         c = c - learning_rate*(3*c**2)
         c_out[i] = c
-        d = d - learning_rate*(3*d**2+2*d*np.sin(d)*np.cos(d))
+        d = d - learning_rate*(2*d*np.sin(d) + d**2*np.cos(d))
         d_out[i] = d
         f3_out[i] = c**3 + d**2*np.sin(d)
 
@@ -59,6 +59,29 @@ def A3_A0254474Y(learning_rate, num_iters):
 #
 # f3(c,d) = c^3 + d^2sin(d)
 # f3'(c) = 3c^2
+# f3'(d) = 2dsin(d) + d^2cos(d)
 # f3'(c,d) = 3c^2 + 2dsin(d) + d^2cos(d)
 
-A3_A0254474Y(0.1, 10)
+a_out, f1_out, b_out, f2_out, c_out, d_out, f3_out = A3_A0254474Y(0.1, 1000)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
