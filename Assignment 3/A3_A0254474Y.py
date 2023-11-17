@@ -1,6 +1,4 @@
 import numpy as np
-import pandas as pd
-
 
 # Please replace "StudentMatriculationNumber" with your actual matric number here and in the filename
 def A3_A0254474Y(learning_rate, num_iters):
@@ -62,7 +60,7 @@ def A3_A0254474Y(learning_rate, num_iters):
 # f3'(d) = 2dsin(d) + d^2cos(d)
 # f3'(c,d) = 3c^2 + 2dsin(d) + d^2cos(d)
 
-a_out, f1_out, b_out, f2_out, c_out, d_out, f3_out = A3_A0254474Y(0.1, 1000)
+a_out, f1_out, b_out, f2_out, c_out, d_out, f3_out = A3_A0254474Y(0.05, 10)
 
 
 
