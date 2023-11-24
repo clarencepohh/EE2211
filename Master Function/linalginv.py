@@ -8,6 +8,7 @@ import numpy as np
 import sys
 from numpy.linalg import inv 
 from numpy.linalg import matrix_rank
+from sklearn.preprocessing import PolynomialFeatures
 
 def linalginv():
     print("\n Are the input values for matrix X integers or floats (i for integers, f for floats)?")
@@ -62,11 +63,11 @@ def linalginv():
         except:
             print("\n Left-inverse does not exist.")
             print("\n End of program.")
-            sys.exit()
+            
         else:
             print("\n Left-inverse exists.")
             print("\n Inverse of X_transpose_X (Left Inverse) is: \n", inverse_XTX)
-            sys.exit()
+            
 
 
     else:
@@ -83,8 +84,52 @@ def linalginv():
             inverse_X = inv(matrix_X)
         except:
             print("\n Inverse does not exist.")
-            sys.exit()
+        
         else:
             print("\n Inverse exists.")
             print("\n Inverse of X is: \n", inverse_X)
-            sys.exit()
+            
+    print("\n Check the number of parameters model needs to learn? (y for yes, any other character otherwise)")
+    choice = input()
+    if choice == 'y':
+        print("\n Input the order of the desired polynomial.")
+        order = int(input()) 
+        poly = PolynomialFeatures(order)
+        polynomial_X = poly.fit_transform(matrix_X)
+        
+        print("\n Are the input values for vector Y integers or floats (i for integers, f for floats)?")
+        input_type_Y = input()
+        print("\n Input the size of the vector Y starting with number of rows.")
+        vect_rows = int(input())
+        print("\n Input the number of columns.")
+        vect_cols = int(input())
+            
+        if input_type_Y == 'i':
+            # populate the vector Y with integers
+            print("\n Input the vector Y row by row.")
+            vector_Y = np.zeros((vect_rows, vect_cols))
+            for i in range(vect_rows):
+                for j in range(vect_cols):
+                    print("\n Input the element at position ", i+1, j+1)
+                    vector_Y[i][j] = int(input())  
+                    
+        elif input_type_Y == 'f':
+            # populate the vector Y with floats
+            print("\n Input the vector Y row by row.")
+            vector_Y = np.zeros((vect_rows, vect_cols))
+            for i in range(vect_rows):
+                for j in range(vect_cols):
+                    print("\n Input the element at position ", i+1, j+1)
+                    vector_Y[i][j] = float(input())  
+        
+        if polynomial_X.shape[0] > polynomial_X.shape[1]: # primal form 
+            w = inv(polynomial_X.T @ polynomial_X) @ polynomial_X.T @ vector_Y
+
+        else: # dual form
+            w = polynomial_X.T @ inv(polynomial_X @ polynomial_X.T) @ vector_Y
+        
+        num_params = w.shape[0]
+        print("\n Number of parameters to learn: ", num_params)
+        
+    else:
+        sys.exit()
