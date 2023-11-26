@@ -38,5 +38,13 @@ def kcluster():
     print("\n Input desired number of iterations.")
     num_iters = int(input())
     
+    
+    for i in range(1, num_iters):
+        print("\n Locations of centroids at iteration ", i, ": ")
+        my_kmeans = KMeans(n_clusters=num_centres, init=starting_pts, n_init=1, max_iter=i).fit(data_pts)
+        print(my_kmeans.cluster_centers_)
+        print("\n Labels at iteration ", i, ": ", my_kmeans.labels_)
+              
     my_kmeans = KMeans(n_clusters=num_centres, init=starting_pts, n_init=1, max_iter=num_iters).fit(data_pts)
-    print("\n Final locations of centroids: \n", my_kmeans.cluster_centers_)
+    print("\n Final locations of centroids after ", num_iters, "iterations : \n", my_kmeans.cluster_centers_)
+    print("\n Labels: ", my_kmeans.labels_)

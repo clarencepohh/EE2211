@@ -128,6 +128,8 @@ def linalginv():
         else: # dual form
             w = polynomial_X.T @ inv(polynomial_X @ polynomial_X.T) @ vector_Y
         
+        print("\n Polynomial X: ", polynomial_X)
+        print("\n W: ", w)
         num_params = w.shape[0]
         print("\n Number of parameters to learn: ", num_params)
         

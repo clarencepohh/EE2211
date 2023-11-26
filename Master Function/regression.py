@@ -120,10 +120,10 @@ def regression():
     else: # dual form
         w = polynomial_X.T @ inv(polynomial_X @ polynomial_X.T + test_lambda*np.eye(polynomial_X.shape[0])) @ vector_Y
         if polynomial_X.shape[0] == polynomial_X.shape[1]:
-            print("\n Dual Form was used as # of columns of polynomial X == # of rows.")
+            print("\n Dual Form was used as # of rows of polynomial X == # of columns.")
             print("\n System is even determined.")
         else: 
-            print("\n Dual Form was used as # of columns of polynomial X > # of rows.")
+            print("\n Dual Form was used as # of rows of polynomial X < # of columns.")
             print("\n System is underdetermined.")
             
     print("\n w is:\n", w)
