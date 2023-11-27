@@ -133,28 +133,37 @@ def regression():
         wtw = w.T @ w 
         print("\n WTW is (Regularization term): ", wtw)
     
-    print("\n Input the test values of X starting with number of rows")
-    num_rows_testX = int(input())
-    print("\n Input the number of columns.")
-    num_cols_testX = int(input())
-
-    if input_type_X == 'i':
-        # populate the test matrix with integers
-        print("\n Input the matrix row by row.")
-        test_matrix_X = np.zeros((num_rows_testX, num_cols_testX))
-        for i in range(num_rows_testX):
-            for j in range(num_cols_testX):
-                print("\n Input the element at position ", i + 1, j + 1)
-                test_matrix_X[i][j] = int(input())
-
-    elif input_type_X == 'f':
-        # populate the test matrix with floats
-        print("\n Input the matrix row by row.")
-        test_matrix_X = np.zeros((num_rows_testX, num_cols_testX))
-        for i in range(num_rows_testX):
-            for j in range(num_cols_testX):
-                print("\n Input the element at position ", i + 1, j + 1)
-                test_matrix_X[i][j] = float(input())
+    print("\n Are you calculating MSE for training data? (y for yes, any other character otherwise).")
+    test_MSE = input()
+    if test_MSE == 'y': 
+        test_matrix_X = np.zeros((num_rows, num_cols))
+        for i in range(num_rows):
+            for j in range(num_cols):
+                test_matrix_X[i][j] = matrix_X[i][j]
+        
+    else: 
+        print("\n Input the test values of X starting with number of rows")
+        num_rows_testX = int(input())
+        print("\n Input the number of columns.")
+        num_cols_testX = int(input())
+    
+        if input_type_X == 'i':
+            # populate the test matrix with integers
+            print("\n Input the matrix row by row.")
+            test_matrix_X = np.zeros((num_rows_testX, num_cols_testX))
+            for i in range(num_rows_testX):
+                for j in range(num_cols_testX):
+                    print("\n Input the element at position ", i + 1, j + 1)
+                    test_matrix_X[i][j] = int(input())
+    
+        elif input_type_X == 'f':
+            # populate the test matrix with floats
+            print("\n Input the matrix row by row.")
+            test_matrix_X = np.zeros((num_rows_testX, num_cols_testX))
+            for i in range(num_rows_testX):
+                for j in range(num_cols_testX):
+                    print("\n Input the element at position ", i + 1, j + 1)
+                    test_matrix_X[i][j] = float(input())
 
     polytest = PolynomialFeatures(order)
     polynomial_testX = polytest.fit_transform(test_matrix_X)
@@ -173,6 +182,16 @@ def regression():
             class_predicted_Y[rows][max_col] = 1
             
         print("\n Predicted Y classes are:\n", class_predicted_Y)
+        
+    if test_MSE == 'y':
+        MSE_array = np.zeros((1, num_cols))
+        for j in range(num_cols):
+            for i in range(num_rows):    
+                MSE_array[0][j] += ((predicted_Y[i][j] - vector_Y[i][j]) ** 2)
+                
+        for j in range(num_cols):
+            MSE_array[0][j] /= num_rows
+        print("\n MSE:  ", MSE_array)
         
     
     return
