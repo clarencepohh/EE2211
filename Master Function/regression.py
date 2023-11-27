@@ -127,6 +127,11 @@ def regression():
             print("\n System is underdetermined.")
             
     print("\n w is:\n", w)
+    print("\n Calculate w T w? (y for yes, any other character otherwise).")
+    input_wtw = input()
+    if input_wtw =='y':
+        wtw = w.T @ w 
+        print("\n WTW is (Regularization term): ", wtw)
     
     print("\n Input the test values of X starting with number of rows")
     num_rows_testX = int(input())
