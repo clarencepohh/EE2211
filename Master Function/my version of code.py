@@ -11,8 +11,8 @@ import regressiontree
 import confusion
 import kcluster
 
-print("\n Input 1 for linear algebra matrix related functions.")
-print("\n Input 2 for checking invertibility, presence of left and right inverses for a matrix X.",
+print("\n Input 1 for linear algebra matrix related functions. [Matrix X and Vector Y]")
+print("\n Input 2 for checking invertibility, presence of left and right inverses for a matrix X [alone].",
       "\n   -     Also calculates the number of parameters a polynomial model has to learn.")
 print("\n Input 3 for regression: linear and polynomial.")
 print("\n Input 4 for gradient descent.")
