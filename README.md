@@ -1,5 +1,6 @@
 ## Introduction
 Hello! It's Clarence, the creator of this repository. This repo contains codes used for my assignments and examination when I took the module EE2211 in AY23/24 Semester 1 under Prof Wang Xinchao and Dr Helen Zhou.
+
 Introduction to Machine Learning was a simple crash course into machine learning concepts, and a good ease into the ideas that are common in machine learning. However, it really was just a toe-dip into the lake that was ML, 
 as I found that many important topics were not covered very in-depth (Neural Networks), and it felt more like a math module with sprinkles of programming fitted in.
 
@@ -19,7 +20,9 @@ The entry to the main function is found under `my version of code.py` (horrible 
 9. Input anything else to exit.
 
 A lot of the programs are very input-heavy, requiring you to make multiple inputs to key in data (which is heavily exacerbated when you have a big matrix!).
+
 This is (unfortunately) a feature, as I did not have the time (nor bothered to) optimize the program for 2 exams. 
+
 You can try to optimize it, but I'd just learn to get used to it. It's honestly not worth it IMO 😆
 
 If you do use the code for yourself, do let me know if it was helpful! I'd be glad to hear from you!
